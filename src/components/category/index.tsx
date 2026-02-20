@@ -19,7 +19,7 @@ export function Category({ name, icon, isSelected, ...res }: CategoryProps) {
   return (
     <TouchableOpacity activeOpacity={0.1}>
       <Pressable style={styles.container} {...res}>
-        <MaterialIcons name={icon} size={16} color={colors.gray[400]} />
+        <MaterialIcons name={icon} size={16} color={color} />
         <Text style={[styles.name, { color }]}>{name}</Text>
       </Pressable>
     </TouchableOpacity>

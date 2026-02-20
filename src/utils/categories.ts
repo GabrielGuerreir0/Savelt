@@ -7,11 +7,11 @@ type Category = {
 };
 
 export const categories: Category[] = [
-  { id: "1", name: "Curso", icon: "account-box" },
-  { id: "2", name: "Curso", icon: "account-box" },
-  { id: "3", name: "Curso", icon: "account-box" },
-  { id: "4", name: "Curso", icon: "account-box" },
-  { id: "5", name: "Curso", icon: "account-box" },
-  { id: "6", name: "Curso", icon: "account-box" },
-  { id: "7", name: "Curso", icon: "account-box" },
+  { id: "1", name: "Academia", icon: "account-box" },
+  { id: "2", name: "Trabalho", icon: "account-box" },
+  { id: "3", name: "Filmes", icon: "account-box" },
+  { id: "4", name: "Estudos", icon: "account-box" },
+  { id: "5", name: "Sonhos", icon: "account-box" },
+  { id: "6", name: "Investimentos", icon: "account-box" },
+  { id: "7", name: "Viagem", icon: "account-box" },
 ];
