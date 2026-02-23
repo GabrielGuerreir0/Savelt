@@ -1,6 +1,7 @@
 import { Button } from "@/components/button";
 import { Categories } from "@/components/categories/inde";
 import { Input } from "@/components/input";
+import { linkStorage } from "@/storage/link-storage";
 import { colors } from "@/styles/colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -13,17 +14,31 @@ export default function Add() {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
 
-  function handleAdd() {
-    if (!category) {
-      return Alert.alert("Catergoria", "Selecione a categoria");
+  async function handleAdd() {
+    try {
+      if (!category) {
+        return Alert.alert("Catergoria", "Selecione a categoria");
+      }
+      if (!name.trim()) {
+        return Alert.alert("Nome", "Intitule seu link");
+      }
+      if (!url.trim()) {
+        return Alert.alert("URL", "Informe a URL");
+      }
+      await linkStorage.save({
+        id: new Date().getTime().toString(),
+        name,
+        url,
+        category,
+      });
+
+      Alert.alert("Sucesso", "Novo link adicionado", [
+        { text: "Ok", onPress: () => router.back() },
+      ]);
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possivel salvar o link");
+      console.log(error);
     }
-    if (!name.trim()) {
-      return Alert.alert("Nome", "Intitule seu link");
-    }
-    if (!url.trim()) {
-      return Alert.alert("URL", "Informe a URL");
-    }
-    console.log({ name, url });
   }
 
   return (
@@ -38,7 +53,7 @@ export default function Add() {
       <Categories onChange={setCategory} selected={category} />
       <View style={styles.form}>
         <Input placeholder="Nome" onChangeText={setName} />
-        <Input placeholder="URL" onChangeText={setUrl} />
+        <Input autoCapitalize="none" placeholder="URL" onChangeText={setUrl} />
         <Button title="Adicionar" onPress={handleAdd} />
       </View>
     </View>

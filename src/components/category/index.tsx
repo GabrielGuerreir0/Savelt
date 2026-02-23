@@ -15,7 +15,7 @@ type CategoryProps = PressableProps & {
 };
 
 export function Category({ name, icon, isSelected, ...res }: CategoryProps) {
-  const color = isSelected ? colors.green[300] : colors.gray[400];
+  const color = isSelected ? colors.orange[300] : colors.gray[400];
   return (
     <TouchableOpacity activeOpacity={0.1}>
       <Pressable style={styles.container} {...res}>

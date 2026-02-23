@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     paddingTop: 62,
   },
   text: {
-    color: colors.green[300],
+    color: colors.orange[300],
   },
   header: {
     width: "100%",
